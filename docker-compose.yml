@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  flaskapp:
+    build: .
+    # command: python app.py test
+    environment:
+      - POSTGRES_DB=database
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=toor
+      - USE_POSTGRES=True
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+  db:
+    image: postgres
